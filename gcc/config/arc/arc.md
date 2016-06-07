@@ -3860,8 +3860,8 @@ archs4x, archs4xd, archs4xd_slow"
 (define_insn "*movsi_ne"
   [(cond_exec
      (ne (match_operand:CC_Z 2 "cc_use_register"    "Rcc,  Rcc,  Rcc,Rcc,Rcc") (const_int 0))
-     (set (match_operand:SI 0 "dest_reg_operand" "=Rcq#q,Rcq#q,Rcq#q,  w,w")
-	  (match_operand:SI 1 "nonmemory_operand"   "C_0,    h, ?Cal, Lc,?Cal")))]
+     (set (match_operand:SI 0 "dest_reg_operand" "=Rcq#q,Rcq#q,Rcq#q,   w,w")
+	  (match_operand:SI 1 "nonmemory_operand"   "C_0,    h, ?Cal,LRac,?Cal")))]
   ""
   "@
 	* current_insn_predicate = 0; return \"sub%?.ne %0,%0,%0%&\";
