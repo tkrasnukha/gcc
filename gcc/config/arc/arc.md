@@ -6141,6 +6141,22 @@
   ""
   [(set_attr "length" "0")])
 
+(define_peephole2 ; std
+[(set (match_operand:SI 2 "memory_operand" "")
+      (match_operand:SI 0 "register_operand" ""))
+ (set (match_operand:SI 3 "memory_operand" "")
+      (match_operand:SI 1 "register_operand" ""))]
+ "TARGET_LL64"
+ [(const_int 0)]
+{
+ if (!gen_operands_ldd_std (operands, false))
+   FAIL;
+ operands[0] = gen_rtx_REG (DImode, REGNO (operands[0]));
+ operands[2] = adjust_address (operands[2], DImode, 0);
+ emit_insn (gen_rtx_SET (operands[2], operands[0]));
+ DONE;
+})
+
 ;; include the arc-FPX instructions
 (include "fpx.md")
 

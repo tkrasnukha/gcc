@@ -45,6 +45,7 @@ extern void arc_expand_atomic_op (enum rtx_code, rtx, rtx, rtx, rtx, rtx);
 extern void arc_split_compare_and_swap (rtx *);
 extern void arc_expand_compare_and_swap (rtx *);
 extern bool compact_memory_operand_p (rtx, machine_mode, bool, bool);
+extern bool gen_operands_ldd_std (rtx *operands, bool load);
 #endif /* RTX_CODE */
 
 #ifdef TREE_CODE
