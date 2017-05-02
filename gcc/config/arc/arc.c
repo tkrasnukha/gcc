@@ -750,8 +750,9 @@ arc_secondary_reload (bool in_p,
 	  if (regno != -1)
 	    return NO_REGS;
 
-	  /* It is a pseudo that ends in a stack location.  */
-	  if (reg_equiv_mem (REGNO (x)))
+	  /* It is a pseudo that ends in a stack location.  This
+	     procedure only works with the old reload step.  */
+	  if (reg_equiv_mem (REGNO (x)) && !lra_in_progress)
 	    {
 	      /* Get the equivalent address and check the range of the
 		 offset.  */
@@ -1945,10 +1946,6 @@ arc_conditional_register_usage (void)
   gcc_assert (FIRST_PSEUDO_REGISTER >= 144);
 
   /* Handle Special Registers.  */
-  arc_regno_reg_class[29] = LINK_REGS; /* ilink1 register.  */
-  if (!TARGET_V2)
-    arc_regno_reg_class[30] = LINK_REGS; /* ilink2 register.  */
-  arc_regno_reg_class[31] = LINK_REGS; /* blink register.  */
   arc_regno_reg_class[60] = LPCOUNT_REG;
   arc_regno_reg_class[61] = NO_REGS;      /* CC_REG: must be NO_REGS.  */
   arc_regno_reg_class[62] = GENERAL_REGS;
@@ -1966,6 +1963,7 @@ arc_conditional_register_usage (void)
 	    {
 	    /* Make sure no 'c', 'w', 'W', or 'Rac' constraint is
 	       interpreted to mean they can use D1 or D2 in their insn.  */
+	    CLEAR_HARD_REG_BIT(reg_class_contents[GENERAL_REGS          ], i);
 	    CLEAR_HARD_REG_BIT(reg_class_contents[CHEAP_CORE_REGS       ], i);
 	    CLEAR_HARD_REG_BIT(reg_class_contents[ALL_CORE_REGS         ], i);
 	    CLEAR_HARD_REG_BIT(reg_class_contents[WRITABLE_CORE_REGS    ], i);
@@ -9478,17 +9476,20 @@ split_subsi (rtx *operands)
 static bool
 arc_process_double_reg_moves (rtx *operands)
 {
+  enum usesDxState { none, srcDx, destDx, maxDx };
+  enum usesDxState state = none;
   rtx dest = operands[0];
   rtx src  = operands[1];
 
-  enum usesDxState { none, srcDx, destDx, maxDx };
-  enum usesDxState state = none;
-
   if (refers_to_regno_p (40, 44, src, 0))
-    state = srcDx;
+    {
+      state = srcDx;
+      gcc_assert (REG_P (dest));
+    }
   if (refers_to_regno_p (40, 44, dest, 0))
     {
       /* Via arc_register_move_cost, we should never see D,D moves.  */
+      gcc_assert (REG_P (src));
       gcc_assert (state == none);
       state = destDx;
     }
@@ -9895,14 +9896,12 @@ arc_eh_uses (int regno)
   return false;
 }
 
-#ifndef TARGET_NO_LRA
-#define TARGET_NO_LRA !TARGET_LRA
-#endif
+/* Return true if we use LRA instead of reload pass.  */
 
-static bool
+bool
 arc_lra_p (void)
 {
-  return !TARGET_NO_LRA;
+  return arc_lra_flag;
 }
 
 /* ??? Should we define TARGET_REGISTER_PRIORITY?  We might perfer to use
