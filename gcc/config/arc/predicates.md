@@ -718,19 +718,31 @@
 (define_predicate "millicode_store_operation"
   (match_code "parallel")
 {
-  return arc_check_millicode (op, 0, 0);
+  return arc_check_millicode (op, 0, 0, true);
 })
 
 (define_predicate "millicode_load_operation"
   (match_code "parallel")
 {
-  return arc_check_millicode (op, 2, 2);
+  return arc_check_millicode (op, 1, 2, false);
 })
 
 (define_predicate "millicode_load_clob_operation"
   (match_code "parallel")
 {
-  return arc_check_millicode (op, 0, 1);
+  return arc_check_millicode (op, 0, 1, false);
+})
+
+(define_predicate "push_multi_operand"
+  (match_code "parallel")
+{
+  return arc_check_millicode (op, 0, 0, false);
+})
+
+(define_predicate "popr_multi_operand"
+  (match_code "parallel")
+{
+  return arc_check_millicode (op, 1, 1, false);
 })
 
 (define_special_predicate "immediate_usidi_operand"

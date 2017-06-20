@@ -85,7 +85,7 @@ extern void arc_ccfsm_record_condition (rtx, bool, rtx_insn *,
 extern void arc_expand_prologue (void);
 extern void arc_expand_epilogue (int);
 extern void arc_init_expanders (void);
-extern int arc_check_millicode (rtx op, int offset, int load_p);
+extern bool arc_check_millicode (rtx ,int ,int , bool);
 extern int arc_get_unalign (void);
 extern void arc_clear_unalign (void);
 extern void arc_toggle_unalign (void);

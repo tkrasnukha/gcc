@@ -5430,6 +5430,59 @@ archs4xd, archs4xd_slow"
   [(set_attr "type" "call")
    (set_attr "is_SIBCALL" "yes")])
 
+(define_insn "*push_multi"
+  [(match_parallel 0 "push_multi_operand"
+		   [(set (reg:SI SP_REG)
+			 (plus:SI (reg:SI SP_REG)
+				  (match_operand 1 "immediate_operand" "")))
+		    (set (mem:SI (plus:SI (reg:SI SP_REG)
+					  (match_dup 1)))
+			 (reg:SI 13))])]
+  "TARGET_CODE_DENSITY"
+  {
+   int len = XVECLEN (operands[0], 0);
+   rtx tmp = XVECEXP (operands[0], 0, len - 1);
+   operands[2] = XEXP (tmp, 1);
+   return "enter_s\\t{r13-%2} ; sp=sp+%1";
+  }
+  [(set_attr "type" "misc")
+   (set_attr "length" "2")])
+
+(define_insn "*pop_multi"
+  [(match_parallel 0 "millicode_load_clob_operation"
+		   [(set (reg:SI SP_REG)
+			 (plus:SI (reg:SI SP_REG)
+				  (match_operand 1 "immediate_operand" "")))
+		    (set (reg:SI 13) (mem:SI (plus:SI (reg:SI SP_REG)
+						      (const_int -4))))])]
+  "TARGET_CODE_DENSITY"
+  {
+   int len = XVECLEN (operands[0], 0);
+   rtx tmp = XVECEXP (operands[0], 0, len - 1);
+   operands[2] = SET_DEST (tmp);
+   return "leave_s\\t{r13-%2} ; sp=sp+%1";
+  }
+  [(set_attr "type" "misc")
+   (set_attr "length" "2")])
+
+(define_insn "*pop_multi_with_return"
+  [(match_parallel 0 "popr_multi_operand"
+		   [(return)
+		    (set (reg:SI SP_REG)
+			 (plus:SI (reg:SI SP_REG)
+				  (match_operand 1 "immediate_operand" "")))
+		    (set (reg:SI 13) (mem:SI (plus:SI (reg:SI SP_REG)
+						      (const_int -4))))])]
+  "TARGET_CODE_DENSITY"
+  {
+   int len = XVECLEN (operands[0], 0);
+   rtx tmp = XVECEXP (operands[0], 0, len - 1);
+   operands[2] = SET_DEST (tmp);
+   return "leave_s\\t{r13-%2,pcl}";
+  }
+  [(set_attr "type" "misc")
+   (set_attr "length" "2")])
+
 (define_insn "tls_load_tp_soft"
   [(set (reg:SI R0_REG) (unspec:SI [(const_int 0)] UNSPEC_TLS_OFF))
    (clobber (reg:SI RETURN_ADDR_REGNUM))]
