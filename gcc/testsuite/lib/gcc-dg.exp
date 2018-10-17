@@ -99,7 +99,8 @@ if [info exists TORTURE_OPTIONS] {
            ]
         } else {
            set LTO_TORTURE_OPTIONS [list \
-	      { -O2 -flto -flto-partition=none } \
+	      # Clang doesn't support "lto-partition" option.
+	      #{ -O2 -flto -flto-partition=none } \
 	      { -O2 -flto }
            ]
         }
