@@ -90,17 +90,18 @@ if [info exists TORTURE_OPTIONS] {
 	{ -Os } ]
 
     if [check_effective_target_lto] {
-        # When having plugin test both slim and fat LTO and plugin/nonplugin
-        # path.
-	if [check_linker_plugin_available] {
+        if [info exists LTO_OPTIONS] {
+            set LTO_TORTURE_OPTIONS $LTO_OPTIONS
+        } elseif [check_linker_plugin_available] {
+           # When having plugin test both slim and fat LTO and plugin/nonplugin
+           # path.
            set LTO_TORTURE_OPTIONS [list \
 	      { -O2 -flto -fno-use-linker-plugin -flto-partition=none } \
 	      { -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects }
            ]
         } else {
            set LTO_TORTURE_OPTIONS [list \
-	      # Clang doesn't support "lto-partition" option.
-	      #{ -O2 -flto -flto-partition=none } \
+	      { -O2 -flto -flto-partition=none } \
 	      { -O2 -flto }
            ]
         }

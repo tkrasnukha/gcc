@@ -21,9 +21,12 @@ load_lib multiline.exp
 if ![info exists TEST_ALWAYS_FLAGS] {
     set TEST_ALWAYS_FLAGS ""
 }
-# Clang doesn't support "no-diagnostics-show-caret" and "diagnostics-color" options.
-#set TEST_ALWAYS_FLAGS "-fno-diagnostics-show-caret -fdiagnostics-color=never $TEST_ALWAYS_FLAGS"
-set TEST_ALWAYS_FLAGS "-fno-color-diagnostics $TEST_ALWAYS_FLAGS"
+
+if [info exists DIAGNOSTICS_FLAGS] {
+    set TEST_ALWAYS_FLAGS "$DIAGNOSTICS_FLAGS $TEST_ALWAYS_FLAGS"
+} else {
+    set TEST_ALWAYS_FLAGS "-fno-diagnostics-show-caret -fdiagnostics-color=never $TEST_ALWAYS_FLAGS"
+}
 
 proc prune_gcc_output { text } {
     global srcdir
