@@ -4,6 +4,8 @@
 /* Verify that non-local structures passed by invisible
    reference are correctly put in the stack.  */
 
+/* { dg-require-effective-target trampolines } */
+
 typedef struct {
   int a;
   int f;

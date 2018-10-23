@@ -1,3 +1,5 @@
+/* { dg-require-effective-target trampolines } */
+
 void write_char(char);
 int len(char*);
 void f(char *a)

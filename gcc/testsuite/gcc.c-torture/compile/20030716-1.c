@@ -1,3 +1,5 @@
+/* { dg-require-effective-target trampolines } */
+
 void baz(int i);
 
 void foo(int i, int A[i+1])

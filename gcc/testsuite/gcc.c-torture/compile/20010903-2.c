@@ -1,3 +1,5 @@
+/* { dg-require-effective-target trampolines } */
+
 extern int __dummy (void *__preg, const char *__string);
 extern int rpmatch (const char *response);
 

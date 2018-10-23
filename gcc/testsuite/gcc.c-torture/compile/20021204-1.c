@@ -3,6 +3,8 @@
 /* Verify that GCC can handle the mix of
    extern inline and nested functions. */
 
+/* { dg-require-effective-target trampolines } */
+
 extern inline int t()
 {
   int q() { return 0; }

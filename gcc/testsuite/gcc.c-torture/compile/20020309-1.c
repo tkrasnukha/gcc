@@ -1,3 +1,5 @@
+/* { dg-require-effective-target trampolines } */
+
 int
 sub1 (char *p, int i)
 {

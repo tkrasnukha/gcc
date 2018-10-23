@@ -1,3 +1,5 @@
+/* { dg-require-effective-target trampolines } */
+
 struct a
 {
   int t;

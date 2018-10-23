@@ -1,4 +1,5 @@
 /* PR 21105 */
+/* { dg-require-effective-target trampolines } */
 
 void
 CheckFile ()

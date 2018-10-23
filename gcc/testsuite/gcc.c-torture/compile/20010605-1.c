@@ -1,3 +1,4 @@
+/* { dg-require-effective-target trampolines } */
 int
 main (int argc, char **argv)
 {

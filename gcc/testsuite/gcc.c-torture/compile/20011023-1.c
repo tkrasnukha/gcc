@@ -1,4 +1,5 @@
 /* Test whether tree inlining works with prototyped nested functions.  */
+/* { dg-require-effective-target trampolines } */
 
 extern void foo (char *x);
 void bar (void);

@@ -1,3 +1,5 @@
+/* { dg-require-effective-target trampolines } */
+
 I_wacom ()
 {
   char buffer[50], *p;

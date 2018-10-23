@@ -4,6 +4,8 @@
 /* Verify that we don't put automatic variables
    in registers too early.  */
 
+/* { dg-require-effective-target trampolines } */
+
 extern int dummy (int *);
 
 void foo(int i)

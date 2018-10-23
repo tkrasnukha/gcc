@@ -1,3 +1,4 @@
+/* { dg-require-effective-target trampolines } */
 f ()
 {
   long long i;
