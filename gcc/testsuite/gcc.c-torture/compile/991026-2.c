@@ -1,3 +1,5 @@
+/* { dg-options "-Wno-return-type -Wno-implicit-int" } */
+
 typedef int __pid_t;			 
 extern __pid_t fork  (void)    ;
 extern int printf  (__const char *__restrict __format, ...)    ;

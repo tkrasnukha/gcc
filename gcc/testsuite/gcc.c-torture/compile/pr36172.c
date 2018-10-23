@@ -1,3 +1,5 @@
+/* { dg-options "-Wno-return-type -Wno-implicit-int" } */
+
 int f(float * );
 __SIZE_TYPE__ FcCharSetFreeze (int *fcs, int b)
 {

@@ -1,4 +1,5 @@
 /* { dg-options "-fno-inline" } */
+/* { dg-additional-options "-Wno-return-type -Wno-implicit-int" { target { is_clang } } } */
 struct foo { int a, b, c; };
 void abort(void);
 void exit(int);
