@@ -1,4 +1,5 @@
-/* { dg-options "-Wno-return-type -Wno-implicit-int" } */
+/* { dg-options "-Wno-return-type -Wno-implicit-int -Wno-implicit-function-declaration -Wno-int-conversion -Wno-format-security" } */
+/* { dg-prune-output "warning: tentative array definition assumed to have one element" } */
 
 static a[];
 static b, h, m, n, o, p, q, t, u, v, t5, t6, t16, t17, t18, t25;
@@ -41,7 +42,7 @@ fn2(long);
 struct S0 {
   short f3;
   float f4;
-  signed f5
+  signed f5;
 };
 const struct S0 t7[] = {};
 static fn3() {

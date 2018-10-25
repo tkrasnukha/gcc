@@ -1,4 +1,4 @@
-/* { dg-options "-funroll-loops -ftracer" } */
+/* { dg-options "-funroll-loops -ftracer -Wno-return-type" } */
 int a, b;
 
 int f(void)
