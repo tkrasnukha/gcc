@@ -7,10 +7,10 @@ foo (void)
     ;
   if (({ 0; 0; }))
     ;
-  if (({ }))		/* { dg-error "void value not ignored as it ought to be" } */
+  if (({ }))		/* { dg-error "void value not ignored as it ought to be|'void' invalid" } */
     ;
-  if (({ 0; { 0; } }))	/* { dg-error "void value not ignored as it ought to be" } */
+  if (({ 0; { 0; } }))	/* { dg-error "void value not ignored as it ought to be|'void' invalid" } */
     ;
-  if (({ 0; {} }))	/* { dg-error "void value not ignored as it ought to be" } */
+  if (({ 0; {} }))	/* { dg-error "void value not ignored as it ought to be|'void' invalid" } */
     ;
 }
