@@ -1,4 +1,4 @@
-/* { dg-options "-fno-early-inlining" } */
+/* { dg-options "-fno-early-inlining" { target { ! is_clang } } } */
 void
 bar ()
 {

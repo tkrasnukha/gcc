@@ -1,6 +1,6 @@
 /* PR tree-optimization/41661 */
 /* { dg-do compile } */
-/* { dg-options "-fno-early-inlining" } */
+/* { dg-options "-fno-early-inlining" { target { ! is_clang } } } */
 
 int g;
 

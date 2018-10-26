@@ -1,4 +1,5 @@
-/* { dg-options "-O2 -funroll-loops -fno-tree-dominator-opts -fno-tree-loop-im -fno-code-hoisting -fno-tree-pre -fno-guess-branch-probability" } */
+/* { dg-options "-O2 -funroll-loops" } */
+/* { dg-additional-options "-fno-tree-dominator-opts -fno-tree-loop-im -fno-code-hoisting -fno-tree-pre -fno-guess-branch-probability" { target { ! is_clang } } } */
 int tw, be;
 
 void

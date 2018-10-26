@@ -1,4 +1,4 @@
-/* { dg-options "-O2 -fsched2-use-superblocks" } */
+/* { dg-options "-O2 -fsched2-use-superblocks" { target { ! is_clang } } } */
 
 int as;
 

@@ -1,4 +1,4 @@
-/* { dg-options "-O -fno-tree-ccp -fno-tree-copy-prop" } */
+/* { dg-options "-O -fno-tree-ccp -fno-tree-copy-prop" { target { ! is_clang } } } */
 #define CSF __builtin_copysignf
 #define CSD __builtin_copysign
 #define CSL __builtin_copysignl

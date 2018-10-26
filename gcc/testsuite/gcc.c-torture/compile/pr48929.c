@@ -1,4 +1,4 @@
-/*{ dg-options "-findirect-inlining" }*/
+/*{ dg-options "-findirect-inlining" { target { ! is_clang } } }*/
 void bar ();
 
 static void

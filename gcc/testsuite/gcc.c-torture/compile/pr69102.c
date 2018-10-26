@@ -1,4 +1,5 @@
-/* { dg-options "-Og -fPIC -fschedule-insns2 -fselective-scheduling2 -fno-tree-fre --param=max-sched-extend-regions-iters=10" } */
+/* { dg-options "-Og -fPIC -fschedule-insns2 --param=max-sched-extend-regions-iters=10" } */
+/* { dg-additional-options "-fselective-scheduling2 -fno-tree-fre" { target { ! is_clang } } } */
 /* { dg-require-effective-target scheduling } */
 /* { dg-require-effective-target fpic } */
 void bar (unsigned int);

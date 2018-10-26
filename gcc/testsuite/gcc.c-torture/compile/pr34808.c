@@ -1,6 +1,6 @@
 /* PR 34808 */
 /* { dg-do compile }
-/* { dg-options "-fno-tree-dominator-opts" } */
+/* { dg-options "-fno-tree-dominator-opts" { target { ! is_clang } } } */
 
 extern int flags;
 

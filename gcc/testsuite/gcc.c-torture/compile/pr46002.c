@@ -1,4 +1,4 @@
-/* { dg-options "-fira-algorithm=priority" } */
+/* { dg-options "-fira-algorithm=priority" { target { ! is_clang } } } */
 char **
 foo (char **p, char *cmp, unsigned i)
 {

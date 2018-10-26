@@ -1,4 +1,4 @@
-/* { dg-options "-fno-tree-forwprop" } */
+/* { dg-options "-fno-tree-forwprop" { target { ! is_clang } } } */
 
 int zy, h4;
 

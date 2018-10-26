@@ -1,4 +1,4 @@
-/* { dg-options "-fmove-loop-invariants" } */
+/* { dg-options "-fmove-loop-invariants" { target { ! is_clang } } } */
 
 static int mdct_win[8];
 int x;
