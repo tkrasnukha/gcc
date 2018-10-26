@@ -1,4 +1,6 @@
 /* { dg-require-effective-target alloca } */
+/* { dg-skip-if "vla in structure - unsupported GNU extension" { is_clang } } */
+
 typedef const int cint;
 typedef struct {
 } Bounds;

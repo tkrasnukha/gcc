@@ -1,4 +1,5 @@
 /* PR tree-optimization/39394 */
+/* { dg-skip-if "vla in structure - unsupported GNU extension" { is_clang } } */
 
 char *p;
 int x;
