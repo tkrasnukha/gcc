@@ -1,4 +1,5 @@
 /* { dg-skip-if "not enough registers" { pdp11-*-* } { "-O[12s]" } { "" } } */
+/* { dg-xfail-if "Clang doesn't support inline asm for ARC yet" { arc-*-* && is_clang } {"*"} {"-O2 -flto"} } */
 
 typedef unsigned short uint16_t;
 typedef unsigned int uint32_t;

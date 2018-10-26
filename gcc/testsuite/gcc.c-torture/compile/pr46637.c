@@ -1,4 +1,5 @@
 /* PR middle-end/46637 */
+/* { dg-skip-if "Clang doesn't support inline asm for ARC yet" { arc-*-*  && is_clang } {"*"} {"-O2 -flto"} } */
 
 struct S { int s[5]; } *p;
 

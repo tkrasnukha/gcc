@@ -1,5 +1,6 @@
 /* PR tree-optimization/38789 */
 /* { dg-do compile } */
+/* { dg-xfail-if "Clang doesn't support inline asm for ARC yet" { arc-*-* && is_clang } {"*"} {"-O2 -flto"} } */
 
 void
 baz (int v)

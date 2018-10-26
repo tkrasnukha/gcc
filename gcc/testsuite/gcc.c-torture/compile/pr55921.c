@@ -1,4 +1,5 @@
 /* PR tree-optimization/55921 */
+/* { dg-xfail-if "Clang doesn't support inline asm for ARC yet" { arc-*-* && is_clang } {"*"} {"-O2 -flto"} } */
 
 typedef union
 {

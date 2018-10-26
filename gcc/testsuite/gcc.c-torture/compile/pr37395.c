@@ -1,3 +1,4 @@
+/* { dg-xfail-if "Clang doesn't support inline asm for ARC yet" { arc-*-* && is_clang } {"*"} {"-O2 -flto"} } */
 /* PR target/37395 */
 
 int

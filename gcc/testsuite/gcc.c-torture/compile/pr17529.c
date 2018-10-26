@@ -1,3 +1,4 @@
+/* { dg-skip-if "Clang doesn't support inline asm for ARC yet" { arc-*-*  && is_clang } {"*"} {"-O2 -flto"} } */
 
 static inline void 
 bar (const int * const x) 

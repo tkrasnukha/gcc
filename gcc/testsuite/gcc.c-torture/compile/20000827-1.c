@@ -1,5 +1,6 @@
 /* Copyright (C) 2000  Free Software Foundation  */
 /* Contributed by Alexandre Oliva <aoliva@redhat.com> */
+/* { dg-xfail-if "Clang doesn't support inline asm for ARC yet" { arc-*-* && is_clang } {"*"} {"-O2 -flto"} } */
 
 int
 foo () 

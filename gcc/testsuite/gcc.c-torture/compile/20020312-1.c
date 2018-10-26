@@ -1,5 +1,6 @@
 /* { dg-do assemble } */
 /* { dg-skip-if "" { pdp11-*-* } { "-O0" } { "" } } */
+/* { dg-xfail-if "Clang doesn't support inline asm for ARC yet" { arc-*-* && is_clang } {"*"} {"-O2 -flto"} } */
 
 /* PR optimization/5892 */
 typedef struct { unsigned long a; unsigned int b, c; } A;

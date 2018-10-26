@@ -1,4 +1,5 @@
 /* PR middle-end/26334 */
+/* { dg-xfail-if "Clang doesn't support inline asm for ARC yet" { arc-*-* && is_clang } {"*"} {"-O2 -flto"} } */
 
 struct U
 {

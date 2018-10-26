@@ -5,6 +5,7 @@
 /* { dg-skip-if "No 64-bit registers" { m32c-*-* } } */
 /* { dg-skip-if "Not enough 64-bit registers" { pdp11-*-* } { "-O0" } { "" } } */
 /* { dg-xfail-if "" { h8300-*-* } } */
+/* { dg-xfail-if "Clang doesn't support inline asm for ARC yet" { arc-*-*  && is_clang } {"*"} {"-O2 -flto"} } */
 
 /* Copyright (C) 2000, 2003 Free Software Foundation */
 __complex__ long long f ()

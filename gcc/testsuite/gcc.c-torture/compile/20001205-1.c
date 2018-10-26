@@ -1,4 +1,5 @@
 /* { dg-do assemble } */
+/* { dg-xfail-if "Clang doesn't support inline asm for ARC yet" { arc-*-* && is_clang } {"*"} {"-O2 -flto"} } */
 
 static inline unsigned long rdfpcr(void)
 {
