@@ -1,3 +1,5 @@
+/* { dg-skip-if "__builtin_malloc is not supported" { is_clang } } */
+
 typedef __builtin_va_list va_list;
 void gftp_config_parse_args (int numargs, char **first, ...)
 {

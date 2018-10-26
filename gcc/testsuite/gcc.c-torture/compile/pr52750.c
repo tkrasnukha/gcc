@@ -1,4 +1,5 @@
 /* PR middle-end/52750 */
+/* { dg-skip-if "__builtin_shuffle is not supported" { is_clang } } */
 
 typedef signed char V __attribute__((vector_size (32)));
 

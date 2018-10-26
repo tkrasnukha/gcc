@@ -1,3 +1,5 @@
+/* { dg-skip-if "__builtin_puts is not supported" { is_clang } } */
+
 extern int debug_threads;
 extern void sigsuspend (void);
 void my_waitpid (int flags, int wnohang)

@@ -1,4 +1,5 @@
 /* { dg-require-effective-target untyped_assembly } */
+/* { dg-skip-if "__builtin_apply is not supported" { is_clang } } */
 
 g (a, b) {}
 

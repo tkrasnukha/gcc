@@ -1,5 +1,6 @@
 /* PR middle-end/34134 */
 /* { dg-require-effective-target alloca } */
+/* { dg-skip-if "__builtin_stack_xxx are not supported" { is_clang } } */
 
 extern void bar (void *, int);
 
