@@ -1,6 +1,8 @@
 /* { dg-options "-fgnu89-inline" } */
 /* { dg-require-weak "" } */
 /* { dg-require-alias "" } */
+/* { dg-additional-options "-Wno-ignored-attributes" { target { is_clang } } } */
+
 #define ASMNAME(cname)  ASMNAME2 (__USER_LABEL_PREFIX__, cname)
 #define ASMNAME2(prefix, cname) STRING (prefix) cname
 #define STRING(x)    #x
