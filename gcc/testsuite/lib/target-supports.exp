@@ -7743,6 +7743,23 @@ proc check_effective_target_inttypes_types { } {
     }]
 }
 
+# Return 1 if tested compiler is Clang.
+
+proc check_effective_target_is_clang { } {
+    if [board_info target exists compiler_kind] {
+      set compiler [board_info target compiler_kind]
+
+      switch $compiler {
+        "clang" { return 1 }
+        "ccac"  { return 0 } # CCAC covers much more features than Clang does.
+                             # So, we consider it as a compiler of different kind.
+        default { return 0 }
+      }
+    }
+
+    return 0
+}
+
 # Return 1 if programs are intended to be run on a simulator
 # (i.e. slowly) rather than hardware (i.e. fast).
 
