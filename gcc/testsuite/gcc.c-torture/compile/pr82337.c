@@ -1,6 +1,7 @@
 /* PR82337: SLSR needs to prevent abnormal SSA names from
    serving as a basis. */
 /* { dg-require-effective-target nonlocal_goto } */
+/* { dg-xfail-if "__builtin_setjmp is not implemented yet" { arc-*-* && is_clang } } */
 
 char *a, *b, *c;
 
