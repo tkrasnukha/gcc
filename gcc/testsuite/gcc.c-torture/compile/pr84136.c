@@ -11,7 +11,7 @@ void foo() {
 
 int main() {
     foo();
-    goto *a;
+    goto *a;  /* { dg-error "indirect goto in function with no address-of-label expressions" { is_clang } } */
 
     return 0;
 }

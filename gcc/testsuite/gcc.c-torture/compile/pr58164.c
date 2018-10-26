@@ -5,5 +5,5 @@ int
 foo (void)
 {
   int x = 0;
-  goto *&x;
+  goto *&x;  /* { dg-error "indirect goto in function with no address-of-label expressions" { is_clang } } */
 }
