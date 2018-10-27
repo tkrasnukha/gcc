@@ -1,7 +1,6 @@
 /* { dg-options "-Wno-return-type -Wno-implicit-int -Wno-implicit-function-declaration -Wno-int-conversion -Wno-format-security" } */
-/* { dg-prune-output "warning: tentative array definition assumed to have one element" } */
 
-static a[];
+static a[]; /* { dg-warning "assumed to have one element" { target { is_clang }  } } */
 static b, h, m, n, o, p, q, t, u, v, t5, t6, t16, t17, t18, t25;
 c;
 static volatile d;
@@ -58,7 +57,7 @@ static fn3() {
 }
 fn6() {
   int i, t30 = 0;
-  if (fn6 == 2)
+  if (fn6 == 2) /* { dg-warning "comparison between pointer and integer" { target { is_clang } } } */
     t30 = 1;
   {
     int t31, i = 0;
