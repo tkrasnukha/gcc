@@ -10,5 +10,5 @@ void
 capture_next_packet (void)
 {
   struct timeval past, now, then;
-  __builtin_bcopy (&then, &past, sizeof (then));
+  __builtin_bcopy (&then, &past, sizeof (then));  /* { dg-error "cannot compile" { target { is_clang } } } */
 }
