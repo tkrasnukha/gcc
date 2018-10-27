@@ -5,7 +5,7 @@ void fn (void);
 void
 foo (void *x, unsigned long y)
 {
-  asm goto ("": : : : lab);
+  asm goto ("": : : : lab); /* { dg-error "not supported yet" { target { is_clang } } } */
 lab:
   fn ();
 }

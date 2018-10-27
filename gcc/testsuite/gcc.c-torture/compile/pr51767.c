@@ -5,7 +5,7 @@ extern void fn1 (void), fn2 (void);
 static inline __attribute__((always_inline)) int
 foo (int *x, long y)
 {
-  asm goto ("" : : "r" (x), "r" (y) : "memory" : lab);
+  asm goto ("" : : "r" (x), "r" (y) : "memory" : lab); /* { dg-error "not supported yet" { target { is_clang } } } */
   return 0;
 lab:
   return 1;
