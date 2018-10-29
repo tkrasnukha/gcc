@@ -1,3 +1,5 @@
+/* { dg-additional-options "-fbracket-depth=1000 -DPTR=PTR3 -DRBR=RBR3" { target { is_clang } } } */
+
 #define PTR1 (* (* (* (* (* (* (* (* (* (*
 #define PTR2 PTR1 PTR1 PTR1 PTR1 PTR1 PTR1 PTR1 PTR1 PTR1 PTR1
 #define PTR3 PTR2 PTR2 PTR2 PTR2 PTR2 PTR2 PTR2 PTR2 PTR2 PTR2
@@ -12,4 +14,12 @@
 #define RBR5 RBR4 RBR4 RBR4 RBR4 RBR4 RBR4 RBR4 RBR4 RBR4 RBR4
 #define RBR6 RBR5 RBR5 RBR5 RBR5 RBR5 RBR5 RBR5 RBR5 RBR5 RBR5
 
-int PTR4 q4_var RBR4 = 0;
+#ifndef PTR
+  #define PTR PTR4
+#endif
+
+#ifndef RBR
+  #define RBR RBR4
+#endif
+
+int PTR q4_var RBR = 0;

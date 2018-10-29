@@ -1,3 +1,5 @@
+/* { dg-additional-options "-fbracket-depth=1000 -DLBR=LBR3 -DRBR=RBR3" { target { is_clang } } } */
+
 #define LBR1 ( ( ( ( ( ( ( ( ( (
 #define LBR2 LBR1 LBR1 LBR1 LBR1 LBR1 LBR1 LBR1 LBR1 LBR1 LBR1
 #define LBR3 LBR2 LBR2 LBR2 LBR2 LBR2 LBR2 LBR2 LBR2 LBR2 LBR2
@@ -12,4 +14,12 @@
 #define RBR5 RBR4 RBR4 RBR4 RBR4 RBR4 RBR4 RBR4 RBR4 RBR4 RBR4
 #define RBR6 RBR5 RBR5 RBR5 RBR5 RBR5 RBR5 RBR5 RBR5 RBR5 RBR5
 
-int q5_var = LBR4 0 RBR4;
+#ifndef LBR
+  #define LBR LBR4
+#endif
+
+#ifndef RBR
+  #define RBR RBR4
+#endif
+
+int q5_var = LBR 0 RBR;
