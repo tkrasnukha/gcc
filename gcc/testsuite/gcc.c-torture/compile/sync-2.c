@@ -1,4 +1,5 @@
-/* { dg-message "note: '__sync_fetch_and_nand' changed semantics in GCC 4.4" "" { target *-*-* } 0 } */
+/* { dg-message "note: '__sync_fetch_and_nand' changed semantics in GCC 4.4" "" { target { ! is_clang } } 0 } */
+/* { dg-excess-errors "Clang produces a warning per line for these intrinsics" { target is_clang } } */
 /* { dg-options "-ffat-lto-objects" } */
 
 /* Validate that each of the __sync builtins compiles.  This won't 
