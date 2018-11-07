@@ -1,5 +1,6 @@
 /* { dg-require-effective-target indirect_jumps } */
 /* { dg-require-effective-target label_values } */
+/* { dg-xfail-if "Clang doesn't support 'label-as-value' for ARC yet" { arc-*-*  && is_clang } } */
 
 typedef int c_int;
 union c_insn

@@ -8,6 +8,7 @@
 /* { dg-options "-w -Wuninitialized -Werror -fpic" } */
 /* { dg-options "-w -Wuninitialized -Werror" { target { { rs6000-*-aix* powerpc*-*-aix* arm*-*-* fr30-*-* sh-*-hms h8300*-*-* cris-*-elf* mmix-*-* } || { ! fpic } } } } */
 /* { dg-require-effective-target label_values } */
+/* { dg-xfail-if "Clang doesn't support 'label-as-value' for ARC yet" { arc-*-*  && is_clang } } */
 
 int foo (int a, int b)
 {

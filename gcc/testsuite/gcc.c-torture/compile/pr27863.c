@@ -1,6 +1,7 @@
 /* This test used to ICE on IA64.  */
 /* { dg-require-effective-target indirect_jumps } */
 /* { dg-require-effective-target label_values } */
+/* { dg-xfail-if "Clang doesn't support 'label-as-value' for ARC yet" { arc-*-*  && is_clang } } */
 
 long stack[100];
 int main(int argc,char**argv,char **envp)
