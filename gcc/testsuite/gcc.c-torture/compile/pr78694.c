@@ -1,4 +1,5 @@
 /* PR target/78694.  */
+/* { dg-xfail-if "Clang doesn't support TLS for ARC yet" { arc-*-*  && is_clang } } */
 
 enum
 {
